@@ -1,0 +1,13 @@
+{
+    "from": "User",
+    "gcode_comments": "1",
+    "gcode_label_objects": "1",
+    "inherits": "0.20mm Standard @FF AD5X",
+    "is_custom_defined": "0",
+    "name": "My 0.20mm Standard @FF AD5X",
+    "post_process": [
+        "\"/Users/nelson/Library/Application Support/OrcaSlicer/user/default/scripts/addMD5.sh\""
+    ],
+    "print_settings_id": "My 0.20mm Standard @FF AD5X",
+    "version": "2.3.1.10"
+}

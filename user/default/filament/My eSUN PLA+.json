@@ -1,0 +1,19 @@
+{
+    "additional_cooling_fan_speed": [
+        "50"
+    ],
+    "filament_settings_id": [
+        "My eSUN PLA+"
+    ],
+    "from": "User",
+    "inherits": "eSUN PLA+ @System",
+    "is_custom_defined": "0",
+    "name": "My eSUN PLA+",
+    "supertack_plate_temp": [
+        "23"
+    ],
+    "supertack_plate_temp_initial_layer": [
+        "23"
+    ],
+    "version": "2.3.1.10"
+}

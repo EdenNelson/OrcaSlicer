@@ -1,0 +1,18 @@
+{
+    "bed_exclude_area": [
+        "0x0",
+        "12x0",
+        "12x1",
+        "0x1"
+    ],
+    "from": "User",
+    "inherits": "Flashforge AD5X 0.6 nozzle",
+    "is_custom_defined": "0",
+    "name": "My Flashforge AD5X 0.6 nozzle",
+    "nozzle_volume": "120.26",
+    "print_host": "192.168.110.208:7125",
+    "print_host_webui": "192.168.110.208",
+    "printer_settings_id": "My Flashforge AD5X 0.6 nozzle",
+    "time_cost": "0.02",
+    "version": "2.1.1.0"
+}

@@ -1,0 +1,23 @@
+{
+    "compatible_printers": [
+        "Elegoo Centauri Carbon 0.2 nozzle",
+        "Elegoo Centauri Carbon 0.4 nozzle",
+        "Elegoo Centauri Carbon 0.6 nozzle",
+        "Elegoo Centauri Carbon 0.8 nozzle",
+        "Flashforge AD5X 0.25 nozzle",
+        "Flashforge AD5X 0.4 nozzle",
+        "Flashforge AD5X 0.6 nozzle",
+        "Flashforge AD5X 0.8 nozzle"
+    ],
+    "default_filament_colour": [
+        "#000000"
+    ],
+    "filament_settings_id": [
+        "My Panchroma CoPE"
+    ],
+    "from": "User",
+    "inherits": "Panchroma CoPE @System",
+    "is_custom_defined": "0",
+    "name": "My Panchroma CoPE",
+    "version": "2.3.1.10"
+}

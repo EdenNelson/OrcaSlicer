@@ -1,0 +1,21 @@
+{
+    "bed_exclude_area": [
+        "0x0",
+        "12x0",
+        "12x1",
+        "0x1"
+    ],
+    "before_layer_change_gcode": ";BEFORE_LAYER_CHANGE\n;[layer_z]\nSET_PRINT_STATS_INFO CURRENT_LAYER={layer_num + 1}",
+    "from": "User",
+    "inherits": "Flashforge AD5X 0.8 nozzle",
+    "is_custom_defined": "0",
+    "machine_end_gcode": "END_PRINT\nSET_GCODE_OFFSET Z=0 MOVE=1",
+    "machine_start_gcode": "G28\nSET_GCODE_OFFSET Z=-0.15 MOVE=1\nLOAD_GCODE_OFFSET\n;CLEAN_NOZZLE COOLDOWN=0\nSET_GCODE_VARIABLE MACRO=_CLIENT_VARIABLE VARIABLE=custom_park_y VALUE=232\n_GOTO_TRASH\n;M190 S[bed_temperature_initial_layer_single]\n;M104 S[nozzle_temperature_initial_layer]\nBED_TEMP=[bed_temperature_initial_layer_single]\nSET_GCODE_VARIABLE MACRO=_KAMP_Settings VARIABLE=purge_height VALUE={first_layer_height}\nSET_GCODE_VARIABLE MACRO=_KAMP_Settings VARIABLE=purge_amount VALUE=20\n\nSTART_PRINT EXTRUDER_TEMP=[nozzle_temperature_initial_layer]\nLOAD_CELL_TARE\nPLAY_MIDI FILE=Beverey_Hills_Cop.mid\nSET_GCODE_OFFSET z=-0.15\nLOAD_GCODE_OFFSET\nSET_PRINT_STATS_INFO TOTAL_LAYER=[total_layer_count]\n;PLAY_MIDI FILE=Beverey_Hills_Cop.mid\n;CLEAR_NOZZLE EXTRUDER_TEMP=140 BED_TEMP=60",
+    "name": "My Flashforge AD5X 0.8 nozzle",
+    "nozzle_volume": "120.26",
+    "print_host": "192.168.110.208:7125",
+    "print_host_webui": "192.168.110.208",
+    "printer_settings_id": "My Flashforge AD5X 0.8 nozzle",
+    "time_cost": "0.02",
+    "version": "2.1.1.0"
+}

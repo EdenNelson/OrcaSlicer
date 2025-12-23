@@ -1,0 +1,22 @@
+{
+    "bed_exclude_area": [
+        "0x0",
+        "12x0",
+        "12x1",
+        "0x1"
+    ],
+    "before_layer_change_gcode": "SET_PRINT_STATS_INFO CURRENT_LAYER={layer_num + 1}",
+    "from": "User",
+    "inherits": "Flashforge AD5X 0.4 nozzle",
+    "is_custom_defined": "0",
+    "machine_end_gcode": "END_PRINT\n",
+    "machine_start_gcode": "; Orca Slicer Machine Start G-code\n; ==============================================================================\n\nG28              ; Home all axes\n_GOTO_TRASH      ; Move to trash/purge location\nLOAD_CELL_TARE   ; Tare the load cell sensor\nM140 S{bed_temperature_initial_layer_single - 5} ; Set bed temp to be 5 degrees below wanted temp to prevent overshoot and waiting. \nM104 S140      ; Set nozzle temp\n\n; --- Build Plate Dependent Z-Offset (ADDITIVE) ---\n; Uses Z_ADJUST with MOVE=1 to ADD to the existing Load Cell Tare offset.\n; This prevents overwriting the precise calibration done by LOAD_CELL_TARE.\n; NOTE: Orca Slicer uses 'elsif' (Perl style), not 'elif' (Python style).\n\n{if curr_bed_type == \"Textured PEI Plate\"}\n    SET_GCODE_OFFSET Z_ADJUST=0.0001 MOVE=0\n{elsif curr_bed_type == \"Smooth Cool Plate\"}\n    SET_GCODE_OFFSET Z_ADJUST=0.0001 MOVE=0\n{elsif curr_bed_type == \"Engineering Plate\"}\n    SET_GCODE_OFFSET Z_ADJUST=0.0001 MOVE=0\n{elsif curr_bed_type == \"Smooth High Temp Plate\"}\n    SET_GCODE_OFFSET Z_ADJUST=0.0001 MOVE=0\n{elsif curr_bed_type == \"Textured Cool Plate\"}\n    SET_GCODE_OFFSET Z_ADJUST=0.0001 MOVE=0\n{elsif curr_bed_type == \"Cool Plate (SuperTack)\"}\n    SET_GCODE_OFFSET Z_ADJUST=0.0001 MOVE=0\n{endif}\n\n; --- Show Color Selection Dialog When Required ---\n; To prevent the color selection dialog from appearing at the start of a print if not required.\n; Checks if there are filament changes (toolchanges > 0).\n; If yes, runs verbose (SILENT=0). If single filament, runs silent (SILENT=1).\n\n{if total_toolchanges > 0}\n    SAVE_ZMOD_DATA SILENT=0\n{else}\n    SAVE_ZMOD_DATA SILENT=1\n{endif}\n\n; --- KAMP (Adaptive Mesh) Settings ---\nSET_GCODE_VARIABLE MACRO=_KAMP_Settings VARIABLE=purge_height VALUE={first_layer_height}\nSET_GCODE_VARIABLE MACRO=_KAMP_Settings VARIABLE=purge_amount VALUE=20\n\n; --- Start Print Macro ---\n; START_PRINT BED_TEMP= EXTRUDER_TEMP= FORCE_LEVELING= FORCE_KAMP= Z_OFFSET= SKIP_ZOFFSET= SKIP_LEVELING= MESH=\n; We pass temperatures here.\n; We DO NOT pass Z_OFFSET here because we handled it additively above.\nSTART_PRINT EXTRUDER_TEMP=[nozzle_temperature_initial_layer] BED_TEMP=[bed_temperature_initial_layer_single]\n\n; --- Final Heat & Stats ---\nPLAY_MIDI FILE=Beverey_Hills_Cop.mid          ; Play completion/start tune\nSET_PRINT_STATS_INFO TOTAL_LAYER=[total_layer_count]\n\n; End Start G-Code\n; ==============================================================================",
+    "name": "My Flashforge AD5X 0.4 nozzle",
+    "nozzle_volume": "120.26",
+    "print_host": "192.168.110.208:7125",
+    "print_host_webui": "http://192.168.110.208/",
+    "printer_settings_id": "My Flashforge AD5X 0.4 nozzle",
+    "time_cost": "0.02",
+    "version": "2.1.1.0",
+    "z_offset": "-0.1"
+}
